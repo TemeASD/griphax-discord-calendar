@@ -1,0 +1,19 @@
+{
+  "name": "discord-calendar",
+  "version": "0.0.1",
+  "description": "Bot that sends calendar notifications to a server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Teemu Pölkki",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
+    "cheerio": "^1.0.0-rc.12",
+    "discord.js": "^14.5.0",
+    "googleapis": "^105.0.0",
+    "jsonfromhtml": "^0.0.5",
+    "puppeteer": "^19.2.2"
+  }
+}
