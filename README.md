@@ -35,7 +35,7 @@ All the code relating to the Calendar API was taken from [here](https://develope
 
 3. Create some config files
 
-* `config.json` for Google Calendar 
+* `config.json` for Google Calendar. Steps can be found from previous step. 
 * `discord-config.json` for Discord.JS
 
 ```json
@@ -65,6 +65,7 @@ OnCalendar=Mon *-*-* 10:00:00
 WantedBy=timers.target
 ```
 
+
 ### Service
 
 ```ascii
@@ -81,6 +82,13 @@ ExecStart=sh path-to-repo/start.sh
 WantedBy=multi-user.target
 ```
 
+### Enabling
+
+If you have named the files as I did, you can use this. Otherwise use the name you used.  
+
+```bash
+systemctl enable ghaxCal.timer
+```
 
 ### That's it. 
 
