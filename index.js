@@ -50,11 +50,11 @@ client.once('ready', async () => {
   fs_sync.writeFileSync("./assets/html/schedule.html", $.root().html(), { encoding: 'utf8', flag: 'w' });
   await page.goto("file:///home/devbox/griphax-discord-calendar/assets/html/schedule.html", { waitUntil: 'networkidle0' });
   await page.screenshot({
-    path: `schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.jpg`
+    path: `schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.png`, type: "png"
   });
   await browser.close();
   /*send image file to discord channel*/
-  await channel.send({ files: [`schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.jpg`] }).catch(error => console.error(error));
+  await channel.send({ files: [`schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.png`] }).catch(error => console.error(error));
   client.destroy();
 });
 

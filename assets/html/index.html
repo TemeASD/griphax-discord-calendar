@@ -179,12 +179,23 @@
     tbody tr:nth-child(odd) {
       background-color: rgba(0, 2, 7, 0.2);
     }
+
+    .figure {
+      position: fixed;
+      top: 1000px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .img {
+      width: 25%;
+    }
   </style>
 </head>
 
 <body>
   <div id="container">
-    <h1 id="heading">Next five upcoming events </h1>
+    <h1 id="heading">Upcoming events </h1>
     <div id="cal-container">
       <table>
         <thead>
@@ -200,6 +211,9 @@
         </tbody>
       </table>
     </div>
+    <figure class="figure">
+      <img class="img" src="more_grip.png">
+    </figure>
   </div>
 
 </body>
