@@ -96,7 +96,8 @@
     }
 
     #desc {
-      width: 45%
+      width: 45%;
+      font-size: 0.9em;
     }
 
     #heading {
@@ -146,7 +147,7 @@
       font-weight: 600;
     }
 
-    td span {
+    td span.small {
       font-weight: 200;
       font-size: 0.8em;
       display: block;
@@ -184,17 +185,8 @@
 
 <body>
   <div id="container">
-    <h1 id="heading">Race calendar </h1>
+    <h1 id="heading">Next five upcoming events </h1>
     <div id="cal-container">
-      <script>
-        currentDate = new Date();
-        startDate = new Date(currentDate.getFullYear(), 0, 1);
-        var days = Math.floor((currentDate - startDate) /
-          (24 * 60 * 60 * 1000));
-
-        var weekNumber = Math.ceil(days / 7);
-        document.getElementById("heading").innerText = `Race calendar for week ${weekNumber}`
-      </script>
       <table>
         <thead>
           <tr>

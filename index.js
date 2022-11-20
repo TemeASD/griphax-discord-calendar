@@ -43,7 +43,7 @@ client.once('ready', async () => {
     const UTCisoStartTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(startdate);
     const UTCisoEndTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(enddate);
 
-    let row = `<tr><td class="bold">${textDate}<span>${isoDate}</span></td><td class="bold" >${UTCisoStartTime} - ${UTCisoEndTime} <span>UTC</span>${isoStartTime} - ${isoEndTime} <span>Europe/Helsinki</span></td><td class="bold">${event.summary}</td><td>${event.location}</td><td class="desc">${event.description}</td></tr>`;
+    let row = `<tr><td class="bold">${textDate}<span class="small">${isoDate}</span></td><td class="bold" >${UTCisoStartTime} - ${UTCisoEndTime} <span class="small">UTC</span>${isoStartTime} - ${isoEndTime} <span class="small">Europe/Helsinki</span></td><td class="bold">${event.summary}</td><td>${event.location}</td><td class="desc">${event.description}</td></tr>`;
 
     $('tbody').append(row);
   });
@@ -123,8 +123,7 @@ async function listEvents(auth) {
   const res = await calendar.events.list({
     calendarId: '7dfad8734021b66a71830abe8ff9dacf4141757e0043a7051e4ea3889927b75c@group.calendar.google.com',
     timeMin: new Date().toISOString(),
-    timeMax: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-    maxResults: 99,
+    maxResults: 5,
     singleEvents: true,
     orderBy: 'startTime',
   });
