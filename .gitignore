@@ -134,4 +134,4 @@ dist
 token.json
 config.json
 discord-config.json
-./assets/html/schedule.html
+assets/html/schedule.html
