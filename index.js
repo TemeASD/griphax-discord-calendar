@@ -28,19 +28,24 @@ client.once('ready', async () => {
   const channel = await client.channels.cache.get(channel_id);
   const events = await authorize().then(listEvents).catch(console.error);
   events.forEach(event => {
-    const dateOptions = { month: "numeric", day: "numeric", year: "numeric" };
-    const timeOptions = { hour: "numeric", minute: "numeric" }
+    const dateOptions = { hour12: false, month: "2-digit", day: "2-digit", year: "numeric" };
+    const timeOptions = { hour12: false, hour: "numeric", minute: "numeric" }
     const startdate = new Date(event.start.dateTime);
     const enddate = new Date(event.end.dateTime);
-    const isoDate = new Intl.DateTimeFormat("iso", dateOptions).format(startdate);
-    const isoStartTime = new Intl.DateTimeFormat("iso", timeOptions).format(startdate);
-    const isoEndTime = new Intl.DateTimeFormat("iso", timeOptions).format(enddate);
-    let row = `<tr><td>${isoDate}</td><td>${isoStartTime} - ${isoEndTime}</td><td>${event.summary}</td><td>${event.description}</td></tr>`;
+    const textDate = startdate.toLocaleString("en-US", { weekday: 'long' });
+    const isoDate = new Intl.DateTimeFormat("fi-FI", dateOptions).format(startdate);
+    const isoStartTime = new Intl.DateTimeFormat("fi-FI", timeOptions).format(startdate);
+    const isoEndTime = new Intl.DateTimeFormat("fi-FI", timeOptions).format(enddate);
+
+    const UTCisoStartTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(startdate);
+    const UTCisoEndTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(enddate);
+
+    let row = `<tr><td class="bold">${textDate}<span>${isoDate}</span></td><td class="bold" >${UTCisoStartTime} - ${UTCisoEndTime} <span>UTC</span>${isoStartTime} - ${isoEndTime} <span>Europe/Helsinki</span></td><td class="bold">${event.summary}</td><td class="desc">${event.description}</td></tr>`;
 
     $('tbody').append(row);
   });
   fs_sync.writeFileSync("./assets/html/schedule.html", $.root().html(), { encoding: 'utf8', flag: 'w' });
-  await page.goto("file:///D:/dev/discord-calendar/assets/html/schedule.html", { waitUntil: 'networkidle0' });
+  await page.goto("file:///home/devbox/griphax-discord-calendar/assets/html/schedule.html", { waitUntil: 'networkidle0' });
   await page.screenshot({
     path: 'schedule.jpg'
   });
@@ -49,7 +54,10 @@ client.once('ready', async () => {
   await channel.send({ files: ['schedule.jpg'] }).catch(error => console.error(error));
   client.destroy();
 });
-//TODO: lähetä kuva; channel.send({ embeds: [embed] }).catch(error => console.error(error));
+
+function convertTz(tzstring, datetime) {
+  return new Date(datetime.toLocaleString('fi-FI', { timeZone: tzstring }));
+}
 /**
  * Reads previously authorized credentials from the save file.
  *
@@ -104,7 +112,7 @@ async function authorize() {
 }
 
 /**
- * Lists the next 2 events on the user's primary calendar.
+ * Lists the next weeks events on the user's primary calendar.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 async function listEvents(auth) {
@@ -112,7 +120,8 @@ async function listEvents(auth) {
   const res = await calendar.events.list({
     calendarId: '7dfad8734021b66a71830abe8ff9dacf4141757e0043a7051e4ea3889927b75c@group.calendar.google.com',
     timeMin: new Date().toISOString(),
-    maxResults: 2,
+    timeMax: new Date(new Date().getTime() + 39 * 24 * 60 * 60 * 1000).toISOString(),
+    maxResults: 99,
     singleEvents: true,
     orderBy: 'startTime',
   });
