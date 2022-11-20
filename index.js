@@ -17,7 +17,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const html = fs_sync.readFileSync('./assets/html/index.html', { encoding: 'utf8', flag: 'r' });
 const cheerio = require('cheerio');
 const $ = cheerio.load(html);
-$("#container").css("background-image", `url(../img/${Math.floor(Math.random() * (14 - 1 + 1) + 1)}.png)`);
+$("#container").css("background-image", `url(../img/${Math.floor(Math.random() * (19 - 1 + 1) + 1)}.png)`);
 const puppeteer = require('puppeteer');
 //discord
 client.once('ready', async () => {
