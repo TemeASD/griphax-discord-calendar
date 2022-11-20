@@ -11,7 +11,8 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
+const html_file_url = 'file:///home/devbox/griphax-discord-calendar/assets/html/schedule.html'
+const config = require('./config.json');
 
 //html building
 const html = fs_sync.readFileSync('./assets/html/index.html', { encoding: 'utf8', flag: 'r' });
@@ -19,6 +20,7 @@ const cheerio = require('cheerio');
 const $ = cheerio.load(html);
 $("#container").css("background-image", `url(../img/${Math.floor(Math.random() * (19 - 1 + 1) + 1)}.png)`);
 const puppeteer = require('puppeteer');
+const { calendar } = require('googleapis/build/src/apis/calendar');
 const dateOptions = { hour12: false, month: "2-digit", day: "2-digit", year: "numeric" };
 //discord
 client.once('ready', async () => {
@@ -48,7 +50,7 @@ client.once('ready', async () => {
     $('tbody').append(row);
   });
   fs_sync.writeFileSync("./assets/html/schedule.html", $.root().html(), { encoding: 'utf8', flag: 'w' });
-  await page.goto("file:///home/devbox/griphax-discord-calendar/assets/html/schedule.html", { waitUntil: 'networkidle0' });
+  await page.goto(html_file_url, { waitUntil: 'networkidle0' });
   await page.screenshot({
     path: `schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.png`, type: "png"
   });
@@ -121,7 +123,7 @@ async function authorize() {
 async function listEvents(auth) {
   const calendar = google.calendar({ version: 'v3', auth });
   const res = await calendar.events.list({
-    calendarId: '7dfad8734021b66a71830abe8ff9dacf4141757e0043a7051e4ea3889927b75c@group.calendar.google.com',
+    calendarId: config.installed.calendar_id,
     timeMin: new Date().toISOString(),
     maxResults: 5,
     singleEvents: true,

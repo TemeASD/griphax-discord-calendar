@@ -104,10 +104,6 @@ dist
 .temp
 .cache
 
-# discord and google auths 
-token.json
-config.json
-discord-config.json
 
 # Docusaurus cache and generated files
 .docusaurus
@@ -133,3 +129,9 @@ discord-config.json
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# customs 
+token.json
+config.json
+discord-config.json
+./assets/html/schedule.html
