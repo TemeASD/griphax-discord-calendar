@@ -19,8 +19,11 @@ const cheerio = require('cheerio');
 const $ = cheerio.load(html);
 $("#container").css("background-image", `url(../img/${Math.floor(Math.random() * (19 - 1 + 1) + 1)}.png)`);
 const puppeteer = require('puppeteer');
+const dateOptions = { hour12: false, month: "2-digit", day: "2-digit", year: "numeric" };
 //discord
 client.once('ready', async () => {
+  let filenamedate = new Date()
+
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2 });
@@ -47,11 +50,11 @@ client.once('ready', async () => {
   fs_sync.writeFileSync("./assets/html/schedule.html", $.root().html(), { encoding: 'utf8', flag: 'w' });
   await page.goto("file:///home/devbox/griphax-discord-calendar/assets/html/schedule.html", { waitUntil: 'networkidle0' });
   await page.screenshot({
-    path: 'schedule.jpg'
+    path: `schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.jpg`
   });
   await browser.close();
   /*send image file to discord channel*/
-  await channel.send({ files: ['schedule.jpg'] }).catch(error => console.error(error));
+  await channel.send({ files: [`schedule-${new Intl.DateTimeFormat("fi-FI", dateOptions).format(filenamedate)}.jpg`] }).catch(error => console.error(error));
   client.destroy();
 });
 
@@ -120,7 +123,7 @@ async function listEvents(auth) {
   const res = await calendar.events.list({
     calendarId: '7dfad8734021b66a71830abe8ff9dacf4141757e0043a7051e4ea3889927b75c@group.calendar.google.com',
     timeMin: new Date().toISOString(),
-    timeMax: new Date(new Date().getTime() + 39 * 24 * 60 * 60 * 1000).toISOString(),
+    timeMax: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(),
     maxResults: 99,
     singleEvents: true,
     orderBy: 'startTime',
@@ -130,7 +133,6 @@ async function listEvents(auth) {
     console.log('No upcoming events found.');
     return;
   }
-  console.log('Upcoming 2 events:');
   console.log(events)
   return events;
 }

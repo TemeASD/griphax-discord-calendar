@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,10 +33,12 @@
       background-image: url(../img/9.png);
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     table {
-      position: relative;
       top: 110px;
       width: 1400px;
       margin: auto;
@@ -42,14 +47,11 @@
       text-align: center;
     }
 
-
-
-
     thead {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: relative;
-      top: 8px;
+      top: 4px;
     }
 
     th {
@@ -71,8 +73,6 @@
     thead tr {
       border-bottom: 6px solid black
     }
-
-
 
     td {
       padding-top: 8px;
@@ -110,10 +110,15 @@
       background-color: rgba(0, 0, 0, 0.2);
       width: 1920px;
       position: absolute;
+      top: 0;
       left: 0;
       right: 0;
       text-align: center;
       z-index: 1;
+    }
+
+    tbody {
+      margin-top: 2px;
     }
 
     #heading:before {
@@ -128,7 +133,6 @@
       right: 0;
       bottom: 0;
     }
-
 
     body {
       max-width: 1920px;
@@ -179,7 +183,7 @@
 </head>
 
 <body>
-  <div id="container" style="background-image: url(../img/17.png);">
+  <div id="container" style="background-image: url(../img/12.png);">
     <h1 id="heading">Race calendar </h1>
     <div id="cal-container">
       <script>
@@ -202,14 +206,33 @@
           </tr>
         </thead>
         <tbody id="dynamic-data">
-        <tr><td class="bold">Monday<span>21.11.2022</span></td><td class="bold">19.00 - 20.30 <span>UTC</span>21.00 - 22.30 <span>Europe/Helsinki</span></td><td class="bold">More Female Racers Imola 3/5</td><td>ACC</td><td class="desc">More Female Racers - Season 5 - Powered by Mercedes-AMG<br><br>Driver(s): Aloo Gobi<br><br>Stream start 19:15 UTC<br><a href="https://www.youtube.com/watch?v=VfovQ1qRCEk" id="ow1288" __is_owner="true">https://www.youtube.com/watch?v=VfovQ1qRCEk</a></td></tr><tr><td class="bold">Wednesday<span>30.11.2022</span></td><td class="bold">16.30 - 19.00 <span>UTC</span>18.30 - 21.00 <span>Europe/Helsinki</span></td><td class="bold">Fisra GT Challenge Snetterton 5/6</td><td>ACC</td><td class="desc"><html-blob><u></u>Driver(s): Jesse Kauppinen, Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br>Stream starts at 17:45 UTC<br><a href="https://www.twitch.tv/simracingfi">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr><tr><td class="bold">Saturday<span>03.12.2022</span></td><td class="bold">12.40 - 20.00 <span>UTC</span>14.40 - 22.00 <span>Europe/Helsinki</span></td><td class="bold">KARS Nürburgring 6h 4/4</td><td>iRacing</td><td class="desc"><html-blob>Driver(s): Sami Heinimo and TBA<br><br>Stream starts 15:00 UTC +2<br><a href="https://www.twitch.tv/simracingfi" id="ow1646" __is_owner="true">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr><tr><td class="bold">Wednesday<span>14.12.2022</span></td><td class="bold">16.30 - 20.00 <span>UTC</span>18.30 - 22.00 <span>Europe/Helsinki</span></td><td class="bold">Fisra GT Challenge Imola 6/6</td><td>ACC</td><td class="desc"><html-blob><u></u>Driver(s): Jesse Kauppinen, Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br>Stream starts at 17:45 UTC<br><a href="https://www.twitch.tv/simracingfi">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr></tbody>
+          <tr>
+            <td class="bold">Monday<span>21.11.2022</span></td>
+            <td class="bold">19.00 - 20.30 <span>UTC</span>21.00 - 22.30 <span>Europe/Helsinki</span></td>
+            <td class="bold">More Female Racers Imola 3/5</td>
+            <td>ACC</td>
+            <td class="desc">More Female Racers - Season 5 - Powered by Mercedes-AMG<br><br>Driver(s): Aloo
+              Gobi<br><br>Stream start 19:15 UTC<br><a href="https://www.youtube.com/watch?v=VfovQ1qRCEk" id="ow1288"
+                __is_owner="true">https://www.youtube.com/watch?v=VfovQ1qRCEk</a></td>
+          </tr>
+          <tr>
+            <td class="bold">Saturday<span>26.11.2022</span></td>
+            <td class="bold">8.00 - 17.00 <span>UTC</span>10.00 - 19.00 <span>Europe/Helsinki</span></td>
+            <td class="bold">FLExTREME COTA 9h</td>
+            <td>ACC</td>
+            <td class="desc">VCOxLFM<br><br><a href="https://www.twitch.tv/vcoesports" id="ow2107"
+                __is_owner="true">https://www.twitch.tv/vcoesports</a></td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
 
 
-<script>
+  <script>
 
-</script>
+  </script>
 
-</body></html>
+</body>
+
+</html>
