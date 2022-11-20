@@ -40,7 +40,7 @@ client.once('ready', async () => {
     const UTCisoStartTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(startdate);
     const UTCisoEndTime = new Intl.DateTimeFormat("fi-FI", { ...timeOptions, timeZone: "UTC" }).format(enddate);
 
-    let row = `<tr><td class="bold">${textDate}<span>${isoDate}</span></td><td class="bold" >${UTCisoStartTime} - ${UTCisoEndTime} <span>UTC</span>${isoStartTime} - ${isoEndTime} <span>Europe/Helsinki</span></td><td class="bold">${event.summary}</td><td class="desc">${event.description}</td></tr>`;
+    let row = `<tr><td class="bold">${textDate}<span>${isoDate}</span></td><td class="bold" >${UTCisoStartTime} - ${UTCisoEndTime} <span>UTC</span>${isoStartTime} - ${isoEndTime} <span>Europe/Helsinki</span></td><td class="bold">${event.summary}</td><td>${event.location}</td><td class="desc">${event.description}</td></tr>`;
 
     $('tbody').append(row);
   });

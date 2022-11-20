@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +35,7 @@
     table {
       position: relative;
       top: 110px;
-      width: 1300px;
+      width: 1400px;
       margin: auto;
       border-collapse: separate;
       border-spacing: 0px 8px;
@@ -83,19 +80,23 @@
     }
 
     #date {
-      width: 12%;
+      width: 10%;
     }
 
     #time {
-      width: 12%;
+      width: 10%;
     }
 
     #event {
-      width: 30%
+      width: 25%
+    }
+
+    #platform {
+      width: 10%;
     }
 
     #desc {
-      width: 46%
+      width: 45%
     }
 
     #heading {
@@ -148,10 +149,6 @@
       margin-bottom: 8px;
     }
 
-    .desc::first-line {
-      font-weight: 600;
-    }
-
     tbody tr td {
       z-index: 1;
       position: relative;
@@ -182,9 +179,8 @@
 </head>
 
 <body>
-  <div id="container" style="background-image: url(../img/19.png);">
+  <div id="container" style="background-image: url(../img/17.png);">
     <h1 id="heading">Race calendar </h1>
-
     <div id="cal-container">
       <script>
         currentDate = new Date();
@@ -201,40 +197,19 @@
             <th id="date">Date</th>
             <th id="time">Time</th>
             <th id="event">Event</th>
+            <th id="platform">Platform</th>
             <th id="desc">Description</th>
           </tr>
         </thead>
         <tbody id="dynamic-data">
-          <tr>
-            <td class="bold">Wednesday<span>30.11.2022</span></td>
-            <td class="bold">16.30 - 19.00 <span>UTC</span>18.30 - 21.00 <span>Europe/Helsinki</span></td>
-            <td class="bold">Fisra GT Challenge Snetterton 5/6</td>
-            <td class="desc">
-              <html-blob>Race:20:00<br><br>Driver(s): Jesse Kauppinen,
-                Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br><a
-                  href="https://www.twitch.tv/simracingfi"><u>https://www.twitch.tv/simracingfi</u></a></html-blob>
-            </td>
-          </tr>
-          <tr>
-            <td class="bold">Wednesday<span>14.12.2022</span></td>
-            <td class="bold">16.30 - 20.00 <span>UTC</span>18.30 - 22.00 <span>Europe/Helsinki</span></td>
-            <td class="bold">Fisra GT Challenge Imola 6/6</td>
-            <td class="desc">
-              <html-blob>Race:20:00<br><br>Driver(s): Jesse Kauppinen,
-                Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br><a
-                  href="https://www.twitch.tv/simracingfi"><u>https://www.twitch.tv/simracingfi</u></a></html-blob>
-            </td>
-          </tr>
-        </tbody>
+        <tr><td class="bold">Monday<span>21.11.2022</span></td><td class="bold">19.00 - 20.30 <span>UTC</span>21.00 - 22.30 <span>Europe/Helsinki</span></td><td class="bold">More Female Racers Imola 3/5</td><td>ACC</td><td class="desc">More Female Racers - Season 5 - Powered by Mercedes-AMG<br><br>Driver(s): Aloo Gobi<br><br>Stream start 19:15 UTC<br><a href="https://www.youtube.com/watch?v=VfovQ1qRCEk" id="ow1288" __is_owner="true">https://www.youtube.com/watch?v=VfovQ1qRCEk</a></td></tr><tr><td class="bold">Wednesday<span>30.11.2022</span></td><td class="bold">16.30 - 19.00 <span>UTC</span>18.30 - 21.00 <span>Europe/Helsinki</span></td><td class="bold">Fisra GT Challenge Snetterton 5/6</td><td>ACC</td><td class="desc"><html-blob><u></u>Driver(s): Jesse Kauppinen, Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br>Stream starts at 17:45 UTC<br><a href="https://www.twitch.tv/simracingfi">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr><tr><td class="bold">Saturday<span>03.12.2022</span></td><td class="bold">12.40 - 20.00 <span>UTC</span>14.40 - 22.00 <span>Europe/Helsinki</span></td><td class="bold">KARS Nürburgring 6h 4/4</td><td>iRacing</td><td class="desc"><html-blob>Driver(s): Sami Heinimo and TBA<br><br>Stream starts 15:00 UTC +2<br><a href="https://www.twitch.tv/simracingfi" id="ow1646" __is_owner="true">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr><tr><td class="bold">Wednesday<span>14.12.2022</span></td><td class="bold">16.30 - 20.00 <span>UTC</span>18.30 - 22.00 <span>Europe/Helsinki</span></td><td class="bold">Fisra GT Challenge Imola 6/6</td><td>ACC</td><td class="desc"><html-blob><u></u>Driver(s): Jesse Kauppinen, Joona Savolainen, Teemu Karppinen, Joonas Savolainen, Antti Salonen, Teemu Pölkki<br><br>Stream starts at 17:45 UTC<br><a href="https://www.twitch.tv/simracingfi">https://www.twitch.tv/simracingfi</a><u></u></html-blob></td></tr></tbody>
       </table>
     </div>
   </div>
 
 
-  <script>
+<script>
 
-  </script>
+</script>
 
-</body>
-
-</html>
+</body></html>
